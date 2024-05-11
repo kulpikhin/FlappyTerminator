@@ -1,8 +1,7 @@
 using UnityEngine;
 using UnityEngine.Events;
 
-[RequireComponent (typeof(PlayerCollisionHandler))]
-[RequireComponent (typeof(PlayerMover))]
+[RequireComponent(typeof(PlayerCollisionHandler), typeof(PlayerMover))]
 public class Player : MonoBehaviour
 {
     private PlayerCollisionHandler _collisionHandler;
@@ -33,17 +32,9 @@ public class Player : MonoBehaviour
 
     private void ProcessCollision(IInteractable interactable)
     {
-        if(interactable is Scope)
+        if (interactable is Scope || interactable is Bullet bullet)
         {
             GameOver?.Invoke();
-        }
-
-        if(interactable is Bullet bullet)
-        {
-            if(!bullet.IsPlayerShoot)
-            {
-                GameOver?.Invoke();
-            }
         }
     }
 }

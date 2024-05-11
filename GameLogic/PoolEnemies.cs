@@ -25,18 +25,19 @@ public class PoolEnemies : MonoBehaviour
             maxSize: _poolMaxSize);
     }
 
-    public void GetEnemy()
+    public Enemy GetEnemy()
     {
-        _enemyPool.Get();
+        return _enemyPool.Get();
     }
 
-    private void ActionOnGet(Enemy enemy)
+    private Enemy ActionOnGet(Enemy enemy)
     {
         enemy.FlewAway += _enemyPool.Release;
         enemy.Died += OnEnemyDied;
         enemy.gameObject.SetActive(true);
         enemy.transform.position = GetRandomPosition();
         enemy.Mover.EnterScene(enemy.transform.position);
+        return enemy;
     }
 
     private void OnEnemyDied(Enemy enemy)

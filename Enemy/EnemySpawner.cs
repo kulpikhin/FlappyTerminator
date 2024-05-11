@@ -1,10 +1,11 @@
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(BoxCollider2D))]
-[RequireComponent(typeof(PoolEnemies))]
+[RequireComponent(typeof(BoxCollider2D), typeof(PoolEnemies))]
 public class EnemySpawner : MonoBehaviour
 {
+    [SerializeField] private BulletPool _bulletPool;
+
     private float _spawnCooldawn = 3f;
     private PoolEnemies _poolEnemies;
     private Coroutine _spawnCoroutine;
@@ -36,7 +37,8 @@ public class EnemySpawner : MonoBehaviour
     {
         while (_isActive)
         {
-            _poolEnemies.GetEnemy();
+            Enemy enemy = _poolEnemies.GetEnemy();
+            enemy.SetBulletPool(_bulletPool);
 
             yield return _waitSeconds;
         }

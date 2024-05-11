@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Player))]
+[RequireComponent(typeof(Player), typeof(Collider2D))]
 public class PlayerCollisionHandler : MonoBehaviour
 {
     public event Action<IInteractable> CollisionDetected;

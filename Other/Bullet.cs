@@ -1,22 +1,16 @@
 using UnityEngine;
+using System;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class Bullet : MonoBehaviour, IInteractable
 {
-    public bool IsPlayerShoot {  get;  set; }
+    public event Action<Bullet> Destroyed;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out Scope scope))
+        if (collision.TryGetComponent(out Scope scope) || collision.TryGetComponent(out Enemy enemy) || collision.TryGetComponent(out Player player))
         {
-            Destroy(gameObject);
-        }
-        else if (IsPlayerShoot && collision.TryGetComponent(out Enemy enemy))
-        {
-            Destroy(gameObject);
-        }
-        else if(!IsPlayerShoot && collision.TryGetComponent(out Player player))
-        {
-            Destroy(gameObject);
+            Destroyed?.Invoke(this);
         }
     }
 }

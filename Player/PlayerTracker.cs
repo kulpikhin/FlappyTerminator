@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class PlayerTracker : MonoBehaviour
 {
-    [SerializeField] Player _player;
-    [SerializeField] float _xOffset;
+    [SerializeField] private Player _player;
+    [SerializeField] private float _xOffset;
 
     private void Update()
     {

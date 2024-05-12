@@ -4,9 +4,9 @@ using UnityEngine;
 [RequireComponent(typeof(Enemy), typeof(Collider2D))]
 public class EnemyGun : MonoBehaviour
 {
-    [SerializeField] Gun _gun;
-    [SerializeField] Bullet _bullet;
-    [SerializeField] float _bulletSpeed;
+    [SerializeField] private Gun _gun;
+    [SerializeField] private Bullet _bullet;
+    [SerializeField] private float _bulletSpeed;
 
     private float _cooldawnDuration = 1.5f;
     private WaitForSeconds _waitSeconds;
@@ -47,10 +47,10 @@ public class EnemyGun : MonoBehaviour
             StopCoroutine(_shootCorutine);
         }
 
-        _shootCorutine = StartCoroutine(ShootCorutine());
+        _shootCorutine = StartCoroutine(Shooting());
     }
 
-    private IEnumerator ShootCorutine()
+    private IEnumerator Shooting()
     {
         while(_isActive)
         {

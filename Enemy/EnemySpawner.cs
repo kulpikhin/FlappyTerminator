@@ -30,10 +30,10 @@ public class EnemySpawner : MonoBehaviour
             StopCoroutine(_spawnCoroutine);
         }
 
-        _spawnCoroutine = StartCoroutine(SpawnCorutine());
+        _spawnCoroutine = StartCoroutine(Spawning());
     }
 
-    private IEnumerator SpawnCorutine()
+    private IEnumerator Spawning()
     {
         while (_isActive)
         {

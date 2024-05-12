@@ -3,11 +3,11 @@ using UnityEngine;
 [RequireComponent(typeof(Player) , typeof(Collider2D))]
 public class PlayerGun : MonoBehaviour
 {
-    [SerializeField] InputSystem _inputSystem;
-    [SerializeField] Gun _gun;
-    [SerializeField] Bullet _bullet;
-    [SerializeField] float _bulletSpeed;
-    [SerializeField] BulletPool _bulletPool;
+    [SerializeField] private InputSystem _inputSystem;
+    [SerializeField] private Gun _gun;
+    [SerializeField] private Bullet _bullet;
+    [SerializeField] private float _bulletSpeed;
+    [SerializeField] private BulletPool _bulletPool;
 
     private Collider2D _collider2D;
     private Vector2 _direction;

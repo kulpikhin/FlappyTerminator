@@ -38,10 +38,10 @@ public class EnemyMover : MonoBehaviour
             StopCoroutine(_moveCorutine);
         }
 
-        _moveCorutine = StartCoroutine(MoveCorutine(target));
+        _moveCorutine = StartCoroutine(Moving(target));
     }
 
-    private IEnumerator MoveCorutine(Vector3 target)
+    private IEnumerator Moving(Vector3 target)
     {
         while (!IsEnterScene)
         {
